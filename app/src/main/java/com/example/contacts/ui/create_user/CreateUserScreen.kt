@@ -18,6 +18,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,8 +35,7 @@ import org.koin.androidx.compose.koinViewModel
 fun CreateUserScreen(viewModel: CreateUserViewModel = koinViewModel()) {
     val scrollState = rememberScrollState()
 
-    val state = viewModel.state
-    val user = state.value.currentUser
+    val state = viewModel.state.value
 
     val getPicture =
         rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
@@ -56,56 +56,58 @@ fun CreateUserScreen(viewModel: CreateUserViewModel = koinViewModel()) {
                 modifier = Modifier
                     .clip(CircleShape)
                     .size(100.dp),
-                model = user.picture,
+                model = state.picture,
                 contentScale = ContentScale.Crop,
                 contentDescription = null
             )
         }
 
         OutlinedTextField(
-            value = user.firstName,
+            value = state.firstName,
             onValueChange = { viewModel.changeFirstName(it) },
             label = { Text(stringResource(id = R.string.first_name_label)) },
             modifier = Modifier.fillMaxWidth()
         )
         OutlinedTextField(
-            value = user.lastName,
+            value = state.lastName,
             onValueChange = { viewModel.changeLastName(it) },
             label = { Text(stringResource(id = R.string.last_name_label)) },
             modifier = Modifier.fillMaxWidth()
         )
         OutlinedTextField(
-            value = user.phoneNumber,
+            value = state.phoneNumber,
             onValueChange = { viewModel.changeNumber(it) },
             label = { Text(stringResource(id = R.string.phone_number_label)) },
             modifier = Modifier.fillMaxWidth(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
         )
         OutlinedTextField(
-            value = user.email,
+            value = state.email,
             onValueChange = { viewModel.changeEmail(it) },
             label = { Text(stringResource(id = R.string.email_label)) },
             modifier = Modifier.fillMaxWidth(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
         )
         OutlinedTextField(
-            value = user.birthDate,
+            value = state.birthDate,
             onValueChange = { viewModel.changeBirthday(it) },
             label = { Text(stringResource(id = R.string.birth_date_label)) },
             modifier = Modifier.fillMaxWidth()
         )
 
+        val addImage = remember {
+            { getPicture.launch("image/*") }
+        }
         Button(
-            onClick = { getPicture.launch("image/*") },
+            onClick = addImage,
             modifier = Modifier.padding(vertical = 16.dp)
         ) {
             Text(text = stringResource(id = R.string.select_image_button_text))
         }
 
         Button(
-            onClick = {
-                viewModel.saveUser(user)
-            }, modifier = Modifier
+            onClick = viewModel::saveUser,
+            modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
         ) {

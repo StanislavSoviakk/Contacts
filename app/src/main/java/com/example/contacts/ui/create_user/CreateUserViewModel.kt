@@ -1,7 +1,6 @@
 package com.example.contacts.ui.create_user
 
 import com.example.contacts.base.BaseViewModel
-import com.example.contacts.domain.model.User
 import com.example.contacts.ui.create_user.use_cases.SaveUserUseCase
 
 class CreateUserViewModel(saveUserUseCase: SaveUserUseCase) :
@@ -9,8 +8,8 @@ class CreateUserViewModel(saveUserUseCase: SaveUserUseCase) :
         reducer = CreateUserReducer(), useCasesList = listOf(saveUserUseCase)
     ) {
 
-    fun saveUser(user: User) {
-        handleEvent(CreateUserEvent.SaveUser(user))
+    fun saveUser() {
+        handleEvent(CreateUserEvent.SaveUser)
     }
 
     fun changeFirstName(firstName: String) {

@@ -1,6 +1,7 @@
 package com.example.contacts.ui.create_user.use_cases
 
 import com.example.contacts.base.UseCase
+import com.example.contacts.domain.model.User
 import com.example.contacts.domain.repository.CurrentUserRepository
 import com.example.contacts.preferences.PreferencesManager
 import com.example.contacts.ui.create_user.CreateUserEvent
@@ -14,7 +15,16 @@ class SaveUserUseCase(
 
     override suspend fun invoke(event: CreateUserEvent, state: CreateUserState): CreateUserEvent {
         if (event is CreateUserEvent.SaveUser) {
-            currentUserRepository.saveCurrentUser(event.user)
+            currentUserRepository.saveCurrentUser(
+                User(
+                    firstName = state.firstName,
+                    lastName = state.lastName,
+                    phoneNumber = state.phoneNumber,
+                    email = state.email,
+                    birthDate = state.birthDate,
+                    picture = state.picture
+                )
+            )
             preferencesManager.saveUserWasCreated()
             return CreateUserEvent.UserSaved
         }
