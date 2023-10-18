@@ -18,13 +18,13 @@ class PreferencesManager(
         )
     }
 
-    fun saveUserEnteredData() {
+    fun saveUserWasCreated() {
         preferences.edit {
             putBoolean(USER_PREFS_KEY, true)
         }
     }
 
-    fun checkIfUserEnteredData(): Boolean {
+    fun checkIfUserWasCreated(): Boolean {
         return preferences.getBoolean(USER_PREFS_KEY, false)
     }
 }

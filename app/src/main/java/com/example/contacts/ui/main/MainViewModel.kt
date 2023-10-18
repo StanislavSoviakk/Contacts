@@ -8,7 +8,7 @@ import com.example.contacts.ui.Screen
 class MainViewModel(private val preferencesManager: PreferencesManager) : ViewModel() {
 
     fun getStartDestination(): String {
-        return if (preferencesManager.checkIfUserEnteredData()) {
+        return if (preferencesManager.checkIfUserWasCreated()) {
             //Open ContactsScreen
             Log.d("Navigation", "Open Contacts Screen")
             Screen.CreateUserScreen.route

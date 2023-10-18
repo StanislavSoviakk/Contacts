@@ -15,7 +15,7 @@ class SaveUserUseCase(
     override suspend fun invoke(event: CreateUserEvent, state: CreateUserState): CreateUserEvent {
         if (event is CreateUserEvent.SaveUser) {
             currentUserRepository.saveCurrentUser(event.user)
-            preferencesManager.saveUserEnteredData()
+            preferencesManager.saveUserWasCreated()
             return CreateUserEvent.UserSaved
         }
         throw IllegalArgumentException("Unexpected event: $event")
