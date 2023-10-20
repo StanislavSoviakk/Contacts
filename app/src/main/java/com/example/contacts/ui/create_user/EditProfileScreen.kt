@@ -1,5 +1,6 @@
 package com.example.contacts.ui.create_user
 
+import android.content.Intent
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
@@ -23,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -32,15 +34,20 @@ import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CreateUserScreen(viewModel: CreateUserViewModel = koinViewModel()) {
+fun EditProfileScreen(viewModel: EditProfileViewModel = koinViewModel()) {
     val scrollState = rememberScrollState()
 
     val state = viewModel.state.value
+    val context = LocalContext.current
 
-    val getPicture =
-        rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+    val getPicture = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {
+        it?.let { uri ->
+            context.contentResolver.takePersistableUriPermission(
+                uri, Intent.FLAG_GRANT_READ_URI_PERMISSION
+            )
             viewModel.setPicture(uri.toString())
         }
+    }
 
     Column(
         modifier = Modifier
@@ -99,15 +106,13 @@ fun CreateUserScreen(viewModel: CreateUserViewModel = koinViewModel()) {
             { getPicture.launch("image/*") }
         }
         Button(
-            onClick = addImage,
-            modifier = Modifier.padding(vertical = 16.dp)
+            onClick = addImage, modifier = Modifier.padding(vertical = 16.dp)
         ) {
             Text(text = stringResource(id = R.string.select_image_button_text))
         }
 
         Button(
-            onClick = viewModel::saveUser,
-            modifier = Modifier
+            onClick = viewModel::saveUser, modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
         ) {

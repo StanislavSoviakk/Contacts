@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 abstract class BaseViewModel<EVENT : BaseEvent, STATE : BaseState>(
@@ -23,7 +22,7 @@ abstract class BaseViewModel<EVENT : BaseEvent, STATE : BaseState>(
 
         useCasesList.filter { it.canHandle(event) }.forEach {
             try {
-                viewModelScope.launch(Dispatchers.IO) {
+                viewModelScope.launch {
                     val result = it.invoke(event, state.value)
                     handleEvent(result)
                 }
