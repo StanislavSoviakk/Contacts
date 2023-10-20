@@ -1,5 +1,6 @@
 package com.example.contacts.ui
 
 sealed class Screen(val route: String) {
-    object CreateUserScreen: Screen("create_user_screen")
+    object EditProfileScreen : Screen("edit_profile_screen")
+    object ProfileScreen : Screen("profile")
 }

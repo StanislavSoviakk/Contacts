@@ -1,6 +1,5 @@
 package com.example.contacts.ui.main
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.contacts.preferences.PreferencesManager
 import com.example.contacts.ui.Screen
@@ -9,11 +8,9 @@ class MainViewModel(private val preferencesManager: PreferencesManager) : ViewMo
 
     fun getStartDestination(): String {
         return if (preferencesManager.checkIfUserWasCreated()) {
-            //Open ContactsScreen
-            Log.d("Navigation", "Open Contacts Screen")
-            Screen.CreateUserScreen.route
+            Screen.ProfileScreen.route
         } else {
-            Screen.CreateUserScreen.route
+            Screen.EditProfileScreen.route
         }
     }
 }
