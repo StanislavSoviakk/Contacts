@@ -11,6 +11,6 @@ interface CurrentUserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(currentUser: CurrentUserEntity)
 
-    @Query("SELECT * FROM current_user LIMIT 1")
-    suspend fun getCurrentUser(): CurrentUserEntity
+    @Query("SELECT * FROM current_user")
+    suspend fun getCurrentUser(): CurrentUserEntity?
 }

@@ -12,6 +12,6 @@ class CurrentUserRepositoryImpl(private val dao: CurrentUserDao) : CurrentUserRe
     }
 
     override suspend fun getCurrentUser(): User {
-        return dao.getCurrentUser().toUser()
+        return dao.getCurrentUser()?.toUser() ?: User()
     }
 }
