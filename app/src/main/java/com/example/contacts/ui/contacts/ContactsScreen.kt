@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.sp
 import com.example.contacts.R
 import com.example.contacts.domain.model.Contact
 import com.example.contacts.domain.model.Status
+import kotlinx.collections.immutable.PersistentList
 import org.koin.androidx.compose.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,24 +43,31 @@ fun Contacts(
 
     val state = viewModel.state.value
 
-    val changeSearchText = remember {
-        { text: String -> viewModel.changeSearchText(text) }
-    }
-
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            OutlinedTextField(value = state.searchText,
-                onValueChange = { changeSearchText(it) },
+            val changeSearchText = remember {
+                { text: String -> viewModel.changeSearchText(text) }
+            }
+            OutlinedTextField(
+                value = state.searchText,
+                onValueChange = changeSearchText,
                 label = { Text(stringResource(id = R.string.search_hint)) },
-                modifier = Modifier.weight(1f).height(56.dp)
+                modifier = Modifier
+                    .weight(1f)
+                    .height(56.dp)
             )
 
             Box(modifier = Modifier.padding(start = 16.dp)) {
-                FilterButton(viewModel, state.isFilterExpanded)
+                FilterButton(
+                    viewModel::expandFilterMenu,
+                    viewModel::collapseFilterMenu,
+                    viewModel::selectStatus,
+                    state.isFilterExpanded
+                )
             }
         }
         ContactsList(state.filteredContacts ?: state.contactsList, state.selectedStatus)
@@ -68,7 +76,7 @@ fun Contacts(
 }
 
 @Composable
-fun ContactsList(filteredContacts: List<Contact>, selectedStatus: Status) {
+fun ContactsList(filteredContacts: PersistentList<Contact>, selectedStatus: Status) {
     LazyColumn(modifier = Modifier.padding(16.dp)) {
         items(filteredContacts.filter {
             it.status == selectedStatus || selectedStatus == Status.NO_STATUS
@@ -88,16 +96,21 @@ fun ContactsList(filteredContacts: List<Contact>, selectedStatus: Status) {
 }
 
 @Composable
-fun FilterButton(viewModel:ContactsViewModel, isFilterExpanded: Boolean){
+fun FilterButton(
+    onExpandFilterMenu: () -> Unit,
+    onCollapseFilterMenu: () -> Unit,
+    onSelectStatus: (Status) -> Unit,
+    isFilterExpanded: Boolean
+) {
     val selectStatus = remember {
-        { status: Status -> viewModel.selectStatus(status) }
+        onSelectStatus
     }
-    Button(onClick = viewModel::expandFilterMenu, modifier = Modifier.height(56.dp)) {
+    Button(onClick = onExpandFilterMenu, modifier = Modifier.height(56.dp)) {
         Text(stringResource(id = R.string.filter))
     }
     DropdownMenu(
         expanded = isFilterExpanded,
-        onDismissRequest = viewModel::collapseFilterMenu
+        onDismissRequest = onCollapseFilterMenu
     ) {
         DropdownMenuItem(onClick = {
             selectStatus(Status.NO_STATUS)
@@ -123,7 +136,7 @@ fun FilterButton(viewModel:ContactsViewModel, isFilterExpanded: Boolean){
 }
 
 @Composable
-fun AddContactButton(){
+fun AddContactButton() {
     Box(
         contentAlignment = Alignment.BottomEnd,
         modifier = Modifier
@@ -132,7 +145,7 @@ fun AddContactButton(){
     ) {
         FloatingActionButton(
             onClick = {
-                      //Add contact screen
+                //Add contact screen
             },
             shape = CircleShape,
         ) {
