@@ -1,6 +1,6 @@
 package com.example.contacts.domain.model
 
-import com.example.contacts.data.local.entity.CurrentUserEntity
+import com.example.contacts.data.local.current_user.entity.CurrentUserEntity
 
 data class User(
     val firstName: String = "",
