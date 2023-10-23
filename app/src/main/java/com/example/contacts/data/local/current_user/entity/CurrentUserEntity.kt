@@ -1,4 +1,4 @@
-package com.example.contacts.data.local.entity
+package com.example.contacts.data.local.current_user.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

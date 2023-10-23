@@ -16,4 +16,15 @@
     <string name="email">Email: %s</string>
     <string name="birth_date">Birth Date: %s</string>
     <string name="edit_profile">Edit Profile</string>
+
+    <string name="search_hint">Search</string>
+    <string name="filter">Filter</string>
+    <string name="all">All</string>
+    <string name="work">WORK</string>
+    <string name="friend">FRIEND</string>
+    <string name="family">FAMILY</string>
+
+    <string name="contacts">Contacts</string>
+    <string name="profile">Profile</string>
+
 </resources>

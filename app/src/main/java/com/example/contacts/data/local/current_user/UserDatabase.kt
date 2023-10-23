@@ -1,8 +1,8 @@
-package com.example.contacts.data.local
+package com.example.contacts.data.local.current_user
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.contacts.data.local.entity.CurrentUserEntity
+import com.example.contacts.data.local.current_user.entity.CurrentUserEntity
 
 @Database(
     entities = [CurrentUserEntity::class], version = 1, exportSchema = true
