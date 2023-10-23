@@ -73,21 +73,13 @@ class MainActivity : ComponentActivity() {
                     BottomNavigation {
                         BottomNavigationItem(
                             selected = navController.currentDestination?.route == Screen.ContactsList.route,
-                            onClick = {
-                                navController.navigate(Screen.ContactsList.route) {
-                                    launchSingleTop = true
-                                }
-                            },
+                            onClick = viewModel::openContactsTab,
                             icon = { Icon(Icons.Filled.List , contentDescription = null) },
                             label = { Text(stringResource(id = R.string.contacts)) }
                         )
                         BottomNavigationItem(
                             selected = navController.currentDestination?.route == Screen.ProfileScreen.route,
-                            onClick = {
-                                navController.navigate(Screen.ProfileScreen.route) {
-                                    launchSingleTop = true
-                                }
-                            },
+                            onClick = viewModel::openProfileTab,
                             icon = { Icon(Icons.Filled.Person, contentDescription = null) },
                             label = { Text(stringResource(id = R.string.profile)) }
                         )

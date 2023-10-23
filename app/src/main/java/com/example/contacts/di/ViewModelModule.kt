@@ -15,7 +15,7 @@ val viewModelModule = module {
             loadUserUseCase = get()
         )
     }
-    viewModel { MainViewModel(preferencesManager = get()) }
+    viewModel { MainViewModel(preferencesManager = get(), router = get()) }
     viewModel { ProfileViewModel(router = get(), loadUserUseCase = get()) }
     viewModel { ContactsViewModel(loadContactsUseCase = get(), filterContactsUseCase = get()) }
 }
