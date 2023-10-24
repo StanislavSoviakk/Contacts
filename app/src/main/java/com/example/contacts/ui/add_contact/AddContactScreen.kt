@@ -33,7 +33,7 @@ fun AddContact(viewModel: AddContactViewModel = koinViewModel()) {
     }
 
     LazyColumn(modifier = Modifier.padding(16.dp)) {
-        itemsIndexed(state.contactsList) { index, contact ->
+        itemsIndexed(state.contactsList, key = { _, contact -> contact.uuid }) { index, contact ->
             Row(
                 modifier = Modifier
                     .padding(4.dp)
@@ -50,13 +50,12 @@ fun AddContact(viewModel: AddContactViewModel = koinViewModel()) {
         }
     }
     if (state.isStatusDialogExpanded) {
-        val saveContact = remember {
-            { status: Status -> viewModel.addContactToDB(status = status) }
-        }
-
         AlertDialog(onDismissRequest = viewModel::collapseDialog,
             title = { Text(text = stringResource(id = R.string.dialog_select_status_title)) },
             text = {
+                val saveContact = remember {
+                    { status: Status -> viewModel.addContactToDB(status = status) }
+                }
                 Row {
                     TextButton(onClick = { saveContact(Status.WORK) }) {
                         Text(text = stringResource(id = R.string.work))
