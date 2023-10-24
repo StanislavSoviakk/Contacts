@@ -25,6 +25,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.contacts.R
 import com.example.contacts.base.Router
 import com.example.contacts.ui.Screen
+import com.example.contacts.ui.add_contact.AddContact
 import com.example.contacts.ui.contacts.Contacts
 import com.example.contacts.ui.create_user.EditProfileScreen
 import com.example.contacts.ui.profile_screen.ProfileScreen
@@ -36,6 +37,7 @@ class MainActivity : ComponentActivity() {
 
     private val viewModel by viewModel<MainViewModel>()
     private val router: Router by inject()
+
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,17 +66,20 @@ class MainActivity : ComponentActivity() {
                             composable(route = Screen.ProfileScreen.route) {
                                 ProfileScreen()
                             }
-                            composable(route = Screen.ContactsList.route){
+                            composable(route = Screen.ContactsScreen.route) {
                                 Contacts()
+                            }
+                            composable(route = Screen.AddContactScreen.route) {
+                                AddContact()
                             }
                         }
                     }
                 }, bottomBar = {
                     BottomNavigation {
                         BottomNavigationItem(
-                            selected = navController.currentDestination?.route == Screen.ContactsList.route,
+                            selected = navController.currentDestination?.route == Screen.ContactsScreen.route,
                             onClick = viewModel::openContactsTab,
-                            icon = { Icon(Icons.Filled.List , contentDescription = null) },
+                            icon = { Icon(Icons.Filled.List, contentDescription = null) },
                             label = { Text(stringResource(id = R.string.contacts)) }
                         )
                         BottomNavigationItem(

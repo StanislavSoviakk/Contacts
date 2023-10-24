@@ -71,7 +71,7 @@ fun Contacts(
             }
         }
         ContactsList(state.filteredContacts ?: state.contactsList, state.selectedStatus)
-        AddContactButton()
+        AddContactButton(viewModel::openAddContactScreen)
     }
 }
 
@@ -136,7 +136,7 @@ fun FilterButton(
 }
 
 @Composable
-fun AddContactButton() {
+fun AddContactButton(onFloatingButtonClick: () -> Unit) {
     Box(
         contentAlignment = Alignment.BottomEnd,
         modifier = Modifier
@@ -144,9 +144,7 @@ fun AddContactButton() {
             .padding(32.dp)
     ) {
         FloatingActionButton(
-            onClick = {
-                //Add contact screen
-            },
+            onClick = onFloatingButtonClick,
             shape = CircleShape,
         ) {
             Icon(Icons.Filled.Add, null)

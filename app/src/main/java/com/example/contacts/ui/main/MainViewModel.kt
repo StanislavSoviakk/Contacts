@@ -24,6 +24,6 @@ class MainViewModel(val router: Router, private val preferencesManager: Preferen
 
     fun openContactsTab() {
         val navOptions = NavOptions.Builder().setLaunchSingleTop(true).build()
-        router.navigateTo(Screen.ContactsList.route, navOptions)
+        router.navigateTo(Screen.ContactsScreen.route, navOptions)
     }
 }
