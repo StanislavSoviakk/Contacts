@@ -12,9 +12,9 @@ class FilterContactsUseCase : UseCase<ContactsEvent, ContactsState> {
 
     override suspend fun invoke(event: ContactsEvent, state: ContactsState): ContactsEvent {
         if (event is ContactsEvent.ChangeSearchText) {
-            val filteredContacts:PersistentList<Contact> = state.contactsList.filter { contact ->
-                contact.firstName.contains(state.searchText, ignoreCase = true)
-                        || contact.lastName.contains(state.searchText, ignoreCase = true)
+            val filteredContacts: PersistentList<Contact> = state.contactsList.filter { contact ->
+                val fullName = "${contact.firstName} ${contact.lastName}"
+                fullName.contains(state.searchText, ignoreCase = true)
             }.toPersistentList()
             return ContactsEvent.ContactsFiltered(contacts = filteredContacts)
         }

@@ -1,7 +1,6 @@
 package com.example.contacts.ui.contacts
 
 import com.example.contacts.base.Reducer
-import kotlinx.collections.immutable.toPersistentList
 
 class ContactsReducer : Reducer<ContactsState, ContactsEvent> {
     override val initState: ContactsState

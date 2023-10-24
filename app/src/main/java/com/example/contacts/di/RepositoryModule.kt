@@ -11,6 +11,6 @@ val repositoryModule = module {
         CurrentUserRepositoryImpl(dao = get())
     }
     single<ContactsRepository> {
-        ContactsRepositoryImpl(dao = get())
+        ContactsRepositoryImpl(dao = get(), api = get())
     }
 }

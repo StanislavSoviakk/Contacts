@@ -27,4 +27,7 @@
     <string name="contacts">Contacts</string>
     <string name="profile">Profile</string>
 
+    <string name="dialog_select_status_title">Select a category</string>
+    <string name="dismiss">Dismiss</string>
+
 </resources>
