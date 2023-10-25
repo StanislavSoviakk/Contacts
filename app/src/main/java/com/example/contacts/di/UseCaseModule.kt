@@ -2,6 +2,8 @@ package com.example.contacts.di
 
 import com.example.contacts.ui.add_contact.use_cases.LoadRandomContactsUseCase
 import com.example.contacts.ui.add_contact.use_cases.SaveContactUseCase
+import com.example.contacts.ui.contact_details.use_cases.DeleteContactUseCase
+import com.example.contacts.ui.contact_details.use_cases.LoadContactUseCase
 import com.example.contacts.ui.contacts.use_cases.FilterContactsUseCase
 import com.example.contacts.ui.contacts.use_cases.LoadContactsUseCase
 import com.example.contacts.ui.create_user.use_cases.LoadUserEditableProfileUseCase
@@ -30,5 +32,11 @@ val useCaseModule = module {
     }
     single {
         SaveContactUseCase(contactsRepository = get())
+    }
+    single {
+        LoadContactUseCase(contactsRepository = get())
+    }
+    single {
+        DeleteContactUseCase(contactsRepository = get())
     }
 }

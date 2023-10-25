@@ -25,6 +25,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.contacts.R
 import com.example.contacts.base.Router
 import com.example.contacts.ui.Screen
+import com.example.contacts.ui.contact_details.ContactDetailsScreen
 import com.example.contacts.ui.add_contact.AddContact
 import com.example.contacts.ui.contacts.Contacts
 import com.example.contacts.ui.create_user.EditProfileScreen
@@ -37,7 +38,6 @@ class MainActivity : ComponentActivity() {
 
     private val viewModel by viewModel<MainViewModel>()
     private val router: Router by inject()
-
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +71,10 @@ class MainActivity : ComponentActivity() {
                             }
                             composable(route = Screen.AddContactScreen.route) {
                                 AddContact()
+                            }
+                            composable(route = Screen.ContactDetails.route + "/{uuid}"){ backStackEntry ->
+                                val uuid: String? = backStackEntry.arguments?.getString("uuid")
+                                ContactDetailsScreen(uuid = uuid)
                             }
                         }
                     }

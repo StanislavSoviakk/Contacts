@@ -7,12 +7,13 @@ class ContactsReducer : Reducer<ContactsState, ContactsEvent> {
         get() = ContactsState()
 
     override fun reduce(event: ContactsEvent, state: ContactsState): ContactsState {
-        return when (event){
+        return when (event) {
             is ContactsEvent.ContactsLoaded -> state.copy(contactsList = event.contacts)
             is ContactsEvent.LoadContacts -> state
             is ContactsEvent.SelectStatus -> state.copy(selectedStatus = event.status)
             is ContactsEvent.ChangeFilterState -> state.copy(isFilterExpanded = event.isExpanded)
             is ContactsEvent.ChangeSearchText -> state.copy(searchText = event.text)
+            is ContactsEvent.FilterContacts -> state
             is ContactsEvent.ContactsFiltered -> state.copy(filteredContacts = event.contacts)
         }
     }

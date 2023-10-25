@@ -12,6 +12,7 @@
 
     <string name="first_name">First Name: %s</string>
     <string name="last_name">Last Name: %s</string>
+    <string name="name">Name: %1$s %2$s</string>
     <string name="phone_number">Phone Number: %s</string>
     <string name="email">Email: %s</string>
     <string name="birth_date">Birth Date: %s</string>
@@ -29,5 +30,13 @@
 
     <string name="dialog_select_status_title">Select a category</string>
     <string name="dismiss">Dismiss</string>
+
+    <string name="category">Category: %s</string>
+    <string name="delete_button_text">Delete</string>
+    <string name="delete_contact_button_title">Delete Contact</string>
+    <string name="delete_contact_button_text">Delete Contact</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+
 
 </resources>
