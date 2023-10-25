@@ -72,7 +72,6 @@ fun Contacts(
         }
         ContactsList(
             state.filteredContacts ?: state.contactsList,
-            state.selectedStatus,
             viewModel::openContactDetailsScreen
         )
         AddContactButton(viewModel::openAddContactScreen)
@@ -82,13 +81,10 @@ fun Contacts(
 @Composable
 fun ContactsList(
     filteredContacts: PersistentList<Contact>,
-    selectedStatus: Status,
     onContactClick: (String) -> Unit
 ) {
     LazyColumn(modifier = Modifier.padding(16.dp)) {
-        items(filteredContacts.filter {
-            it.status == selectedStatus || selectedStatus == Status.NO_STATUS
-        }) { contact ->
+        items(filteredContacts) { contact ->
             val selectContact = remember {
                 { uuid: String -> onContactClick(uuid) }
             }

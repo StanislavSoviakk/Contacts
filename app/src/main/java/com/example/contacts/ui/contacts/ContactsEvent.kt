@@ -12,4 +12,5 @@ sealed interface ContactsEvent : BaseEvent {
     data class ChangeFilterState(val isExpanded: Boolean) : ContactsEvent
     data class ChangeSearchText(val text: String) : ContactsEvent
     data class ContactsFiltered(val contacts: PersistentList<Contact>) : ContactsEvent
+    data class FilterContacts(val searchTest : String, val status: Status) : ContactsEvent
 }

@@ -25,6 +25,7 @@ class ContactsViewModel(
 
     fun selectStatus(status: Status) {
         handleEvent(ContactsEvent.SelectStatus(status))
+        filterContacts()
         collapseFilterMenu()
     }
 
@@ -38,6 +39,15 @@ class ContactsViewModel(
 
     fun changeSearchText(text: String) {
         handleEvent(ContactsEvent.ChangeSearchText(text))
+        filterContacts()
+    }
+
+    private fun filterContacts() {
+        handleEvent(
+            ContactsEvent.FilterContacts(
+                state.value.searchText, state.value.selectedStatus
+            )
+        )
     }
 
     fun openAddContactScreen() {
