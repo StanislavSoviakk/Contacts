@@ -10,7 +10,7 @@ data class Contact(
     val email: String = "",
     val picture: String = "",
     val status: Status = Status.NO_STATUS,
-    val uuid: String
+    val uuid: String = ""
 )
 
 fun Contact.toContactEntity(): ContactEntity {

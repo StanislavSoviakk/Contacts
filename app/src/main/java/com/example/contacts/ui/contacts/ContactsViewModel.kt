@@ -43,4 +43,9 @@ class ContactsViewModel(
     fun openAddContactScreen() {
         router.navigateTo(Screen.AddContactScreen.route)
     }
+
+    fun openContactDetailsScreen(uuid: String) {
+        router.navigateTo(Screen.ContactDetails.route + "/${uuid}")
+    }
+
 }

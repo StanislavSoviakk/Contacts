@@ -22,4 +22,12 @@ class ContactsRepositoryImpl(private val dao: ContactsDao, private val api: Rand
     override suspend fun addContact(contact: Contact) {
         dao.insert(contact.toContactEntity())
     }
+
+    override suspend fun getContact(uuid: String): Contact {
+        return dao.getContact(uuid).toContact()
+    }
+
+    override suspend fun deleteContact(uuid: String) {
+        dao.deleteContact(uuid)
+    }
 }

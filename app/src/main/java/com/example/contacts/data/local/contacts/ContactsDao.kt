@@ -13,4 +13,10 @@ interface ContactsDao {
 
     @Query("SELECT * FROM contacts")
     suspend fun getContacts(): List<ContactEntity>
+
+    @Query("SELECT * FROM contacts WHERE uuid = :uuid")
+    suspend fun getContact(uuid: String): ContactEntity
+
+    @Query("DELETE FROM contacts WHERE uuid = :uuid")
+    suspend fun deleteContact(uuid: String)
 }

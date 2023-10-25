@@ -70,22 +70,35 @@ fun Contacts(
                 )
             }
         }
-        ContactsList(state.filteredContacts ?: state.contactsList, state.selectedStatus)
+        ContactsList(
+            state.filteredContacts ?: state.contactsList,
+            state.selectedStatus,
+            viewModel::openContactDetailsScreen
+        )
         AddContactButton(viewModel::openAddContactScreen)
     }
 }
 
 @Composable
-fun ContactsList(filteredContacts: PersistentList<Contact>, selectedStatus: Status) {
+fun ContactsList(
+    filteredContacts: PersistentList<Contact>,
+    selectedStatus: Status,
+    onContactClick: (String) -> Unit
+) {
     LazyColumn(modifier = Modifier.padding(16.dp)) {
         items(filteredContacts.filter {
             it.status == selectedStatus || selectedStatus == Status.NO_STATUS
         }) { contact ->
-            Row(modifier = Modifier
-                .padding(4.dp)
-                .clickable {
-                    //Open Contact details screen
-                }) {
+            val selectContact = remember {
+                { uuid: String -> onContactClick(uuid) }
+            }
+            Row(
+                modifier = Modifier
+                    .padding(4.dp)
+                    .clickable(onClick = {
+                        selectContact(contact.uuid)
+                    })
+            ) {
                 Text(
                     text = "${contact.firstName} ${contact.lastName}",
                     style = MaterialTheme.typography.bodyMedium.copy(fontSize = 20.sp)

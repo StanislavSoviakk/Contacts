@@ -1,6 +1,7 @@
 package com.example.contacts.di
 
 import com.example.contacts.ui.add_contact.AddContactViewModel
+import com.example.contacts.ui.contact_details.ContactDetailsViewModel
 import com.example.contacts.ui.contacts.ContactsViewModel
 import com.example.contacts.ui.create_user.EditProfileViewModel
 import com.example.contacts.ui.main.MainViewModel
@@ -18,6 +19,25 @@ val viewModelModule = module {
     }
     viewModel { MainViewModel(preferencesManager = get(), router = get()) }
     viewModel { ProfileViewModel(router = get(), loadUserUseCase = get()) }
-    viewModel { ContactsViewModel(loadContactsUseCase = get(), filterContactsUseCase = get(), router = get()) }
-    viewModel { AddContactViewModel(loadRandomContactsUseCase = get(), saveContactUseCase = get(), router = get())}
+    viewModel {
+        ContactsViewModel(
+            loadContactsUseCase = get(),
+            filterContactsUseCase = get(),
+            router = get()
+        )
+    }
+    viewModel {
+        AddContactViewModel(
+            loadRandomContactsUseCase = get(),
+            saveContactUseCase = get(),
+            router = get()
+        )
+    }
+    viewModel {
+        ContactDetailsViewModel(
+            router = get(),
+            loadContactUseCase = get(),
+            deleteContactUseCase = get()
+        )
+    }
 }
