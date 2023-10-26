@@ -1,11 +1,11 @@
 package com.example.contacts.ui.create_user
 
 import androidx.navigation.NavOptions
-import com.example.contacts.base.BaseViewModel
-import com.example.contacts.base.Router
 import com.example.contacts.ui.Screen
 import com.example.contacts.ui.create_user.use_cases.LoadUserEditableProfileUseCase
 import com.example.contacts.ui.create_user.use_cases.SaveUserUseCase
+import com.example.core.base.BaseViewModel
+import com.example.core.base.Router
 
 class EditProfileViewModel(
     val router: Router,

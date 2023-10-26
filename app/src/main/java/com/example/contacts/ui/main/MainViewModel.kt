@@ -2,9 +2,9 @@ package com.example.contacts.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavOptions
-import com.example.contacts.base.Router
 import com.example.contacts.preferences.PreferencesManager
 import com.example.contacts.ui.Screen
+import com.example.core.base.Router
 
 class MainViewModel(val router: Router, private val preferencesManager: PreferencesManager) :
     ViewModel() {

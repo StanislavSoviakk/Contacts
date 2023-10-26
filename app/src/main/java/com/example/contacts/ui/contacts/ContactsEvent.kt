@@ -1,8 +1,8 @@
 package com.example.contacts.ui.contacts
 
-import com.example.contacts.base.BaseEvent
-import com.example.contacts.domain.model.Contact
-import com.example.contacts.domain.model.Status
+import com.example.core.base.BaseEvent
+import com.example.domain.model.Contact
+import com.example.domain.model.Status
 import kotlinx.collections.immutable.PersistentList
 
 sealed interface ContactsEvent : BaseEvent {
@@ -12,5 +12,5 @@ sealed interface ContactsEvent : BaseEvent {
     data class ChangeFilterState(val isExpanded: Boolean) : ContactsEvent
     data class ChangeSearchText(val text: String) : ContactsEvent
     data class ContactsFiltered(val contacts: PersistentList<Contact>) : ContactsEvent
-    data class FilterContacts(val searchTest : String, val status: Status) : ContactsEvent
+    data class FilterContacts(val searchTest: String, val status: Status) : ContactsEvent
 }

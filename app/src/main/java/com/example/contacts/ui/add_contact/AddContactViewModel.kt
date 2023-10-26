@@ -1,13 +1,13 @@
 package com.example.contacts.ui.add_contact
 
 import androidx.navigation.NavOptions
-import com.example.contacts.base.BaseViewModel
-import com.example.contacts.base.Router
-import com.example.contacts.domain.model.Contact
-import com.example.contacts.domain.model.Status
 import com.example.contacts.ui.Screen
 import com.example.contacts.ui.add_contact.use_cases.LoadRandomContactsUseCase
 import com.example.contacts.ui.add_contact.use_cases.SaveContactUseCase
+import com.example.core.base.BaseViewModel
+import com.example.core.base.Router
+import com.example.domain.model.Contact
+import com.example.domain.model.Status
 
 class AddContactViewModel(
     loadRandomContactsUseCase: LoadRandomContactsUseCase,
@@ -27,7 +27,7 @@ class AddContactViewModel(
 
     fun addContactToDB(status: Status) {
         collapseDialog()
-        state.value.selectedContact?.let { contact ->
+        state.value.selectedContact?.let { contact: Contact ->
             handleEvent(AddContactEvent.SaveContact(contact.copy(status = status)))
         }
         navigateToContactsList()

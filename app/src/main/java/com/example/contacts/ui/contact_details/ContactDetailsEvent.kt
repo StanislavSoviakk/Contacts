@@ -1,7 +1,7 @@
 package com.example.contacts.ui.contact_details
 
-import com.example.contacts.base.BaseEvent
-import com.example.contacts.domain.model.Contact
+import com.example.core.base.BaseEvent
+import com.example.domain.model.Contact
 
 sealed interface ContactDetailsEvent : BaseEvent {
     data class LoadContact(val uuid: String) : ContactDetailsEvent

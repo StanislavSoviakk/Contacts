@@ -1,7 +1,7 @@
 package com.example.contacts.ui.contact_details
 
-import com.example.contacts.base.BaseState
-import com.example.contacts.domain.model.Contact
+import com.example.core.base.BaseState
+import com.example.domain.model.Contact
 
 data class ContactDetailsState(
     val contact: Contact = Contact(),

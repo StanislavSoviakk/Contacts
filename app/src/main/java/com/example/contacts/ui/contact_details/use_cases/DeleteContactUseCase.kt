@@ -1,9 +1,9 @@
 package com.example.contacts.ui.contact_details.use_cases
 
-import com.example.contacts.base.UseCase
-import com.example.contacts.domain.repository.ContactsRepository
 import com.example.contacts.ui.contact_details.ContactDetailsEvent
 import com.example.contacts.ui.contact_details.ContactDetailsState
+import com.example.core.base.UseCase
+import com.example.domain.repository.ContactsRepository
 
 class DeleteContactUseCase(private val contactsRepository: ContactsRepository) :
     UseCase<ContactDetailsEvent, ContactDetailsState> {

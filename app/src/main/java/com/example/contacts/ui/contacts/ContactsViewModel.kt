@@ -1,11 +1,11 @@
 package com.example.contacts.ui.contacts
 
-import com.example.contacts.base.BaseViewModel
-import com.example.contacts.base.Router
-import com.example.contacts.domain.model.Status
 import com.example.contacts.ui.Screen
 import com.example.contacts.ui.contacts.use_cases.FilterContactsUseCase
 import com.example.contacts.ui.contacts.use_cases.LoadContactsUseCase
+import com.example.core.base.BaseViewModel
+import com.example.core.base.Router
+import com.example.domain.model.Status
 
 class ContactsViewModel(
     loadContactsUseCase: LoadContactsUseCase,

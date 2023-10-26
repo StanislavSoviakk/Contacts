@@ -93,4 +93,7 @@ dependencies {
     implementation "androidx.compose.material:material:1.5.4"
     implementation "org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.6"
 
+    implementation project(':data')
+    implementation project(':domain')
+    implementation project(':core')
 }

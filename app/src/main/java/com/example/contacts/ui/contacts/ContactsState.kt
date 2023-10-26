@@ -1,8 +1,8 @@
 package com.example.contacts.ui.contacts
 
-import com.example.contacts.base.BaseState
-import com.example.contacts.domain.model.Contact
-import com.example.contacts.domain.model.Status
+import com.example.core.base.BaseState
+import com.example.domain.model.Contact
+import com.example.domain.model.Status
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
 

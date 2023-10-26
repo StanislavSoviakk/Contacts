@@ -1,6 +1,6 @@
 package com.example.contacts.ui.create_user
 
-import com.example.contacts.base.BaseState
+import com.example.core.base.BaseState
 
 data class EditProfileState(
     val firstName: String = "",

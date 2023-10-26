@@ -1,6 +1,6 @@
 package com.example.contacts.ui.contacts
 
-import com.example.contacts.base.Reducer
+import com.example.core.base.Reducer
 
 class ContactsReducer : Reducer<ContactsState, ContactsEvent> {
     override val initState: ContactsState

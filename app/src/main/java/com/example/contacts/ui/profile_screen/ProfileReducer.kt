@@ -1,6 +1,6 @@
 package com.example.contacts.ui.profile_screen
 
-import com.example.contacts.base.Reducer
+import com.example.core.base.Reducer
 
 class ProfileReducer() : Reducer<ProfileState, ProfileEvent> {
     override val initState: ProfileState = ProfileState()

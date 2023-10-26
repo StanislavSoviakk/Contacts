@@ -1,11 +1,11 @@
 package com.example.contacts.ui.contact_details
 
 import androidx.navigation.NavOptions
-import com.example.contacts.base.BaseViewModel
-import com.example.contacts.base.Router
 import com.example.contacts.ui.Screen
 import com.example.contacts.ui.contact_details.use_cases.DeleteContactUseCase
 import com.example.contacts.ui.contact_details.use_cases.LoadContactUseCase
+import com.example.core.base.BaseViewModel
+import com.example.core.base.Router
 
 class ContactDetailsViewModel(
     val router: Router,

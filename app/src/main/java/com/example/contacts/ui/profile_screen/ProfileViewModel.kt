@@ -1,9 +1,9 @@
 package com.example.contacts.ui.profile_screen
 
-import com.example.contacts.base.BaseViewModel
-import com.example.contacts.base.Router
 import com.example.contacts.ui.Screen
 import com.example.contacts.ui.profile_screen.use_cases.LoadUserNonEditableProfileUseCase
+import com.example.core.base.BaseViewModel
+import com.example.core.base.Router
 
 class ProfileViewModel(val router: Router, loadUserUseCase: LoadUserNonEditableProfileUseCase) :
     BaseViewModel<ProfileEvent, ProfileState>(

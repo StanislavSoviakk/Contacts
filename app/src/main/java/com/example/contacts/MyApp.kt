@@ -2,6 +2,7 @@ package com.example.contacts
 
 import android.app.Application
 import com.example.contacts.di.databaseModule
+import com.example.contacts.di.mappersModule
 import com.example.contacts.di.networkModule
 import com.example.contacts.di.preferencesModule
 import com.example.contacts.di.repositoryModule
@@ -23,7 +24,8 @@ class MyApp : Application() {
                 databaseModule,
                 preferencesModule,
                 routerModule,
-                networkModule
+                networkModule,
+                mappersModule
             )
         }
     }

@@ -1,7 +1,7 @@
 package com.example.contacts.ui.add_contact
 
-import com.example.contacts.base.BaseState
-import com.example.contacts.domain.model.Contact
+import com.example.core.base.BaseState
+import com.example.domain.model.Contact
 import kotlinx.collections.immutable.PersistentList
 import kotlinx.collections.immutable.persistentListOf
 

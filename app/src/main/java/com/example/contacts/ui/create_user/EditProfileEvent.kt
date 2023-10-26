@@ -1,7 +1,7 @@
 package com.example.contacts.ui.create_user
 
-import com.example.contacts.base.BaseEvent
-import com.example.contacts.domain.model.User
+import com.example.core.base.BaseEvent
+import com.example.domain.model.User
 
 sealed interface EditProfileEvent : BaseEvent {
     object LoadUser : EditProfileEvent

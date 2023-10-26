@@ -1,6 +1,6 @@
 package com.example.contacts.ui.create_user
 
-import com.example.contacts.base.Reducer
+import com.example.core.base.Reducer
 
 class EditProfileReducer : Reducer<EditProfileState, EditProfileEvent> {
     override val initState: EditProfileState = EditProfileState()

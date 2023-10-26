@@ -1,6 +1,6 @@
 package com.example.contacts.ui.add_contact
 
-import com.example.contacts.base.Reducer
+import com.example.core.base.Reducer
 import kotlinx.collections.immutable.toPersistentList
 
 class AddContactReducer : Reducer<AddContactState, AddContactEvent> {

@@ -1,9 +1,9 @@
 package com.example.contacts.ui.profile_screen.use_cases
 
-import com.example.contacts.base.UseCase
-import com.example.contacts.domain.repository.CurrentUserRepository
 import com.example.contacts.ui.profile_screen.ProfileEvent
 import com.example.contacts.ui.profile_screen.ProfileState
+import com.example.core.base.UseCase
+import com.example.domain.repository.CurrentUserRepository
 
 class LoadUserNonEditableProfileUseCase(private val currentUserRepository: CurrentUserRepository) :
     UseCase<ProfileEvent, ProfileState> {

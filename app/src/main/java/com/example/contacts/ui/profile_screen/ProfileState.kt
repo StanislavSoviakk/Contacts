@@ -1,6 +1,6 @@
 package com.example.contacts.ui.profile_screen
 
-import com.example.contacts.base.BaseState
+import com.example.core.base.BaseState
 
 data class ProfileState(
     val firstName: String = "",
