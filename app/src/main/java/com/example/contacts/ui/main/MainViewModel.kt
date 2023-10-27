@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.NavOptions
 import com.example.contacts.preferences.PreferencesManager
 import com.example.contacts.ui.Screen
-import com.example.core.base.Router
+import com.example.contacts.common.Router
 
 class MainViewModel(val router: Router, private val preferencesManager: PreferencesManager) :
     ViewModel() {

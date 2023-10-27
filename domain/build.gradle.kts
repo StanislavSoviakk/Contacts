@@ -7,3 +7,7 @@ java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
 }
+dependencies {
+    implementation(project(":core"))
+    implementation ("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.6")
+}

@@ -2,10 +2,13 @@ package com.example.contacts.ui.add_contact
 
 import androidx.navigation.NavOptions
 import com.example.contacts.ui.Screen
-import com.example.contacts.ui.add_contact.use_cases.LoadRandomContactsUseCase
-import com.example.contacts.ui.add_contact.use_cases.SaveContactUseCase
-import com.example.core.base.BaseViewModel
-import com.example.core.base.Router
+import com.example.domain.add_contact.use_cases.LoadRandomContactsUseCase
+import com.example.domain.add_contact.use_cases.SaveContactUseCase
+import com.example.contacts.common.BaseViewModel
+import com.example.contacts.common.Router
+import com.example.domain.add_contact.AddContactEvent
+import com.example.domain.add_contact.AddContactReducer
+import com.example.domain.add_contact.AddContactState
 import com.example.domain.model.Contact
 import com.example.domain.model.Status
 
@@ -13,10 +16,13 @@ class AddContactViewModel(
     loadRandomContactsUseCase: LoadRandomContactsUseCase,
     saveContactUseCase: SaveContactUseCase,
     val router: Router
-) : BaseViewModel<AddContactEvent, AddContactState>(
+) : BaseViewModel<AddContactEvent, AddContactState, AddContactUIState>(
     reducer = AddContactReducer(),
     useCasesList = listOf(loadRandomContactsUseCase, saveContactUseCase)
 ) {
+    override val uiState: AddContactUIState
+        get() = state.value.toUIState()
+
     init {
         loadUsers()
     }

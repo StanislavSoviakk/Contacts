@@ -26,7 +26,7 @@ private const val PREFETCH_DISTANCE = 5
 @Composable
 fun AddContact(viewModel: AddContactViewModel = koinViewModel()) {
 
-    val state = viewModel.state.value
+    val state = viewModel.uiState
 
     val onContactClick = remember {
         { contact: Contact -> viewModel.onContactClick(contact) }

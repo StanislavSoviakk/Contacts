@@ -30,7 +30,7 @@ import com.example.contacts.ui.contacts.Contacts
 import com.example.contacts.ui.create_user.EditProfileScreen
 import com.example.contacts.ui.profile_screen.ProfileScreen
 import com.example.contacts.ui.theme.ContactsTheme
-import com.example.core.base.Router
+import com.example.contacts.common.Router
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

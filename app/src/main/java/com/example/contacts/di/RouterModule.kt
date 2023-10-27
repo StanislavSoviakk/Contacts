@@ -1,7 +1,7 @@
 package com.example.contacts.di
 
-import com.example.core.base.Router
-import com.example.core.base.RouterImpl
+import com.example.contacts.common.Router
+import com.example.contacts.common.RouterImpl
 import org.koin.dsl.module
 
 val routerModule = module {

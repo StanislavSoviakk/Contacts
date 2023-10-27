@@ -1,20 +1,25 @@
 package com.example.contacts.ui.contact_details
 
 import androidx.navigation.NavOptions
+import com.example.contacts.common.BaseViewModel
+import com.example.contacts.common.Router
 import com.example.contacts.ui.Screen
-import com.example.contacts.ui.contact_details.use_cases.DeleteContactUseCase
-import com.example.contacts.ui.contact_details.use_cases.LoadContactUseCase
-import com.example.core.base.BaseViewModel
-import com.example.core.base.Router
+import com.example.domain.contact_details.ContactDetailsEvent
+import com.example.domain.contact_details.ContactDetailsReducer
+import com.example.domain.contact_details.ContactDetailsState
+import com.example.domain.contact_details.use_cases.DeleteContactUseCase
+import com.example.domain.contact_details.use_cases.LoadContactUseCase
 
 class ContactDetailsViewModel(
     val router: Router,
     loadContactUseCase: LoadContactUseCase,
     deleteContactUseCase: DeleteContactUseCase
-) : BaseViewModel<ContactDetailsEvent, ContactDetailsState>(
+) : BaseViewModel<ContactDetailsEvent, ContactDetailsState, ContactDetailsUIState>(
     reducer = ContactDetailsReducer(),
     useCasesList = listOf(loadContactUseCase, deleteContactUseCase)
 ) {
+    override val uiState: ContactDetailsUIState
+        get() = state.value.toUIState()
 
     fun loadContact(uuid: String?) {
         uuid?.let {

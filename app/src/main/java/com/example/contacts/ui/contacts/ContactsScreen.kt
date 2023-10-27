@@ -41,7 +41,7 @@ fun Contacts(
     viewModel: ContactsViewModel = koinViewModel()
 ) {
 
-    val state = viewModel.state.value
+    val state = viewModel.uiState
 
     Column(modifier = Modifier.fillMaxSize()) {
         Row(

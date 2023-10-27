@@ -23,7 +23,7 @@ import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ProfileScreen(viewModel: ProfileViewModel = koinViewModel()) {
-    val state = viewModel.state.value
+    val state = viewModel.uiState
 
     Column(
         modifier = Modifier
