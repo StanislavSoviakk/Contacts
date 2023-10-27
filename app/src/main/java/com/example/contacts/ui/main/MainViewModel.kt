@@ -2,11 +2,11 @@ package com.example.contacts.ui.main
 
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavOptions
-import com.example.contacts.preferences.PreferencesManager
 import com.example.contacts.ui.Screen
 import com.example.contacts.common.Router
+import com.example.domain.PreferencesManagerRepository
 
-class MainViewModel(val router: Router, private val preferencesManager: PreferencesManager) :
+class MainViewModel(val router: Router, private val preferencesManager: PreferencesManagerRepository) :
     ViewModel() {
 
     fun getStartDestination(): String {
