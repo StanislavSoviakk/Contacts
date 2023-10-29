@@ -1,6 +1,6 @@
 package com.example.contacts.di
 
-import com.example.contacts.data.remote.RandomContactsApi
+import com.example.data.remote.RandomContactsApi
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

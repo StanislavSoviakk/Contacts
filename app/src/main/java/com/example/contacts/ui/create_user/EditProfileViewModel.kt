@@ -1,19 +1,24 @@
 package com.example.contacts.ui.create_user
 
 import androidx.navigation.NavOptions
-import com.example.contacts.base.BaseViewModel
-import com.example.contacts.base.Router
 import com.example.contacts.ui.Screen
-import com.example.contacts.ui.create_user.use_cases.LoadUserEditableProfileUseCase
-import com.example.contacts.ui.create_user.use_cases.SaveUserUseCase
+import com.example.domain.create_user.use_cases.LoadUserEditableProfileUseCase
+import com.example.domain.create_user.use_cases.SaveUserUseCase
+import com.example.contacts.common.BaseViewModel
+import com.example.contacts.common.Router
+import com.example.domain.create_user.EditProfileEvent
+import com.example.domain.create_user.EditProfileReducer
+import com.example.domain.create_user.EditProfileState
 
 class EditProfileViewModel(
     val router: Router,
     saveUserUseCase: SaveUserUseCase,
     loadUserUseCase: LoadUserEditableProfileUseCase
-) : BaseViewModel<EditProfileEvent, EditProfileState>(
+) : BaseViewModel<EditProfileEvent, EditProfileState, EditProfileUIState>(
     reducer = EditProfileReducer(), useCasesList = listOf(saveUserUseCase, loadUserUseCase)
 ) {
+    override val uiState: EditProfileUIState
+        get() = state.value.toUIState()
 
     init {
         loadUser()

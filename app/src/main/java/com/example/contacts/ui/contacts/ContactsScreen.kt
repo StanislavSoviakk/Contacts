@@ -30,8 +30,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.contacts.R
-import com.example.contacts.domain.model.Contact
-import com.example.contacts.domain.model.Status
+import com.example.domain.model.Contact
+import com.example.domain.model.Status
 import kotlinx.collections.immutable.PersistentList
 import org.koin.androidx.compose.koinViewModel
 
@@ -41,7 +41,7 @@ fun Contacts(
     viewModel: ContactsViewModel = koinViewModel()
 ) {
 
-    val state = viewModel.state.value
+    val state = viewModel.uiState
 
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
@@ -84,7 +84,7 @@ fun ContactsList(
     onContactClick: (String) -> Unit
 ) {
     LazyColumn(modifier = Modifier.padding(16.dp)) {
-        items(filteredContacts) { contact ->
+        items(filteredContacts) { contact: Contact ->
             val selectContact = remember {
                 { uuid: String -> onContactClick(uuid) }
             }

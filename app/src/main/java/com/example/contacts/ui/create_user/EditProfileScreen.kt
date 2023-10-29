@@ -37,7 +37,7 @@ import org.koin.androidx.compose.koinViewModel
 fun EditProfileScreen(viewModel: EditProfileViewModel = koinViewModel()) {
     val scrollState = rememberScrollState()
 
-    val state = viewModel.state.value
+    val state = viewModel.uiState
     val context = LocalContext.current
 
     val getPicture = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {

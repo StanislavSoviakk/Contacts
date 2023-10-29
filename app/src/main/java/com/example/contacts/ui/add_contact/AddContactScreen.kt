@@ -17,8 +17,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.contacts.R
-import com.example.contacts.domain.model.Contact
-import com.example.contacts.domain.model.Status
+import com.example.domain.model.Contact
+import com.example.domain.model.Status
 import org.koin.androidx.compose.koinViewModel
 
 private const val PREFETCH_DISTANCE = 5
@@ -26,14 +26,14 @@ private const val PREFETCH_DISTANCE = 5
 @Composable
 fun AddContact(viewModel: AddContactViewModel = koinViewModel()) {
 
-    val state = viewModel.state.value
+    val state = viewModel.uiState
 
     val onContactClick = remember {
         { contact: Contact -> viewModel.onContactClick(contact) }
     }
 
     LazyColumn(modifier = Modifier.padding(16.dp)) {
-        itemsIndexed(state.contactsList, key = { _, contact -> contact.uuid }) { index, contact ->
+        itemsIndexed(state.contactsList, key = { _, contact: Contact -> contact.uuid }) { index, contact ->
             Row(
                 modifier = Modifier
                     .padding(4.dp)

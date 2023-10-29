@@ -26,7 +26,7 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun ContactDetailsScreen(viewModel: ContactDetailsViewModel = koinViewModel(), uuid: String?) {
 
-    val state = viewModel.state.value
+    val state = viewModel.uiState
 
     LaunchedEffect(key1 = uuid) {
         viewModel.loadContact(uuid)
